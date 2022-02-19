@@ -17,7 +17,7 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .root {
   background: linear-gradient(125deg, #0d324d, #7f5a83);
   height: 100vh;
