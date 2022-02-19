@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="wrap">
     <article id="tasks_1-2" class="root">
       <Lab1Input v-model="user" :label="label" />
-      <ArticleArrow />
+      <ArticleArrow @click="scrollTo('tasks_3-4')" />
     </article>
     <basic-wave />
     <article id="tasks_3-4" class="root">123421</article>
@@ -20,9 +20,13 @@ export default defineComponent({
     const label = computed(
       () => `Привет, ${user.value.length ? user.value : "незнакомец"}`
     );
+    const scrollTo = (id: string) => {
+      document.querySelector(`#${id}`)?.scrollIntoView({ behavior: "smooth" });
+    };
     return {
       label,
       user,
+      scrollTo,
     };
   },
   components: {
@@ -33,6 +37,12 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
+.wrap {
+  scroll-snap-type: y mandatory;
+}
+article {
+  scroll-snap-align: center;
+}
 #tasks_3-4 {
   background: #222;
   color: white;
