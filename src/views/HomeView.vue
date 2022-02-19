@@ -1,9 +1,9 @@
 <template>
   <div class="root">
-    <div class="wrap">
-      <LabCard />
-      <LabCard />
-      <LabCard />
+    <div class="home-grid">
+      <LabCard :title="'Лабораторна робота №1'" :href="'/lab1'" />
+      <LabCard :title="'Лабораторна робота №2'" :href="'/lab2'" />
+      <LabCard :title="'Лабораторна робота №3'" :href="'/lab3'" />
     </div>
   </div>
 </template>
@@ -25,12 +25,11 @@ export default defineComponent({
   display: grid;
   place-items: center;
 }
-.wrap {
+.home-grid {
   display: grid;
-  place-items: center;
   grid-template-columns: repeat(3, 1fr);
-  gap: 100px;
-  max-width: 80vw;
   width: 100%;
+  max-width: 80%;
+  gap: 100px;
 }
 </style>
