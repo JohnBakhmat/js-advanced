@@ -17,7 +17,7 @@ export default defineComponent({
     const label = computed(() => `Привет, ${user.value}`);
     const handleChange = (event: any) => {
       const data = event.target.value;
-      user.value = data;
+      user.value = data || "незнакомец";
     };
     return {
       label,
