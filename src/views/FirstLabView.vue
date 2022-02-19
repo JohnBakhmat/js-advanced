@@ -1,11 +1,7 @@
 <template>
   <div>
     <article id="tasks_1-2" class="root">
-      <Lab1Input
-        :label="label"
-        :onChange="handleChange"
-        :value="user === 'незнакомец' ? null : user"
-      />
+      <Lab1Input v-model="user" :label="label" />
       <ArticleArrow />
     </article>
     <article>123421</article>
@@ -18,11 +14,13 @@ import ArticleArrow from "@/components/ArticleArrow.vue";
 
 export default defineComponent({
   setup() {
-    const user = ref("незнакомец");
-    const label = computed(() => `Привет, ${user.value}`);
+    const user = ref("");
+    const label = computed(
+      () => `Привет, ${user.value.length ? user.value : "незнакомец"}`
+    );
     const handleChange = (event: any) => {
       const data = event.target.value;
-      user.value = data || "незнакомец";
+      user.value = data;
     };
     return {
       label,

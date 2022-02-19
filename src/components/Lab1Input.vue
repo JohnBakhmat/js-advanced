@@ -4,8 +4,9 @@
       type="text"
       class="input"
       required
-      @input="onChange"
-      :value="value"
+      v-bind="$attrs"
+      :value="modelValue"
+      @input="$emit('update:modelValue', $event.target.value)"
     />
     <label class="label">{{ label }}</label>
   </div>
@@ -18,13 +19,12 @@ export default defineComponent({
   props: {
     label: {
       type: String,
-      default: "label",
+      default: "default",
     },
-    value: {
+    modelValue: {
       type: [String, Number],
       default: "",
     },
-    onChange: Function,
   },
 });
 </script>
