@@ -18,8 +18,10 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-.root {
+body {
   background: linear-gradient(125deg, #0d324d, #7f5a83);
+}
+.root {
   height: 100vh;
   width: 100vw;
   display: grid;
