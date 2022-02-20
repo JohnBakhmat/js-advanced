@@ -2,7 +2,7 @@
   <div class="wrap">
     <section id="tasks_1-2" class="root">
       <Lab1Input v-model="user" :label="label" />
-      <ArticleArrow @click="scrollTo('tasks_3-4')" />
+      <ArticleArrow @click="scrollTo('tasks_3-5')" />
     </section>
     <basic-wave />
     <section id="tasks_3-5" class="root">Dog API</section>
@@ -43,7 +43,7 @@ export default defineComponent({
 section {
   scroll-snap-align: center;
 }
-#tasks_3-4 {
+#tasks_3-5 {
   background: #222;
   color: white;
 }
