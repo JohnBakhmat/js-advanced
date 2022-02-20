@@ -5,7 +5,7 @@
       <ArticleArrow @click="scrollTo('tasks_3-4')" />
     </section>
     <basic-wave />
-    <section id="tasks_3-4" class="root">123421</section>
+    <section id="tasks_3-5" class="root">Dog API</section>
   </div>
 </template>
 <script lang="ts">
