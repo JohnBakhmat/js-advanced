@@ -1,11 +1,11 @@
 <template>
   <div class="wrap">
-    <article id="tasks_1-2" class="root">
+    <section id="tasks_1-2" class="root">
       <Lab1Input v-model="user" :label="label" />
       <ArticleArrow @click="scrollTo('tasks_3-4')" />
-    </article>
+    </section>
     <basic-wave />
-    <article id="tasks_3-4" class="root">123421</article>
+    <section id="tasks_3-4" class="root">123421</section>
   </div>
 </template>
 <script lang="ts">
@@ -40,7 +40,7 @@ export default defineComponent({
 .wrap {
   scroll-snap-type: y mandatory;
 }
-article {
+section {
   scroll-snap-align: center;
 }
 #tasks_3-4 {
