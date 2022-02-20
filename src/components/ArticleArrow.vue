@@ -6,6 +6,8 @@
 .arrow {
   position: absolute;
   bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
   font-size: 3rem;
   color: #fff;
   animation: bounce 1s infinite;

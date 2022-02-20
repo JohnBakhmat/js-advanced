@@ -22,10 +22,12 @@ body {
   background: linear-gradient(125deg, #0d324d, #7f5a83);
 }
 .root {
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
   width: 100vw;
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  place-content: center;
 }
 .home-grid {
   display: grid;
