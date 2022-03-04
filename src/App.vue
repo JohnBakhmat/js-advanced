@@ -6,4 +6,7 @@
 * {
   margin: 0 auto;
 }
+body {
+  overflow-x: hidden;
+}
 </style>
