@@ -1,5 +1,4 @@
 <template>
-  <AppModal />
   <div class="wrap">
     <tasks-one-two />
     <basic-wave />

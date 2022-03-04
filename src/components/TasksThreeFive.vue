@@ -1,5 +1,5 @@
 <template>
-  <app-modal :isOpen="isModalOpen" />
+  <app-modal :isOpen="isModalOpen" @close="handleModalClose" />
   <section id="tasks_3-5" class="root">
     <div>
       <breed-button classes="random-breed" @click="handleRandomBreedClick">
@@ -28,6 +28,9 @@ export default defineComponent({
   setup() {
     const breeds = ref([]);
     const isModalOpen = ref(false);
+    const handleModalClose = () => {
+      isModalOpen.value = !isModalOpen.value;
+    };
     //Functions
     const scrollTo = (id: string) => {
       document.querySelector(`#${id}`)?.scrollIntoView({ behavior: "smooth" });
@@ -50,6 +53,7 @@ export default defineComponent({
       breeds,
       handleRandomBreedClick,
       isModalOpen,
+      handleModalClose,
     };
   },
   components: {

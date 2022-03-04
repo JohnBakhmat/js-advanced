@@ -8,13 +8,22 @@ export default defineComponent({
       default: false,
     },
   },
+  emits: ["close"],
+  setup(props, ctx) {
+    const handleClickOutside = () => {
+      ctx.emit("close");
+    };
+    return {
+      handleClickOutside,
+    };
+  },
 });
 </script>
 
 <template>
   <Teleport to="#modal">
     <div v-if="isOpen" class="modal-backdrop">
-      <div class="modal">
+      <div class="modal" v-click-away="handleClickOutside">
         <slot />
       </div>
     </div>
