@@ -1,6 +1,6 @@
 <template>
   <app-modal :isOpen="isModalOpen" @close="handleModalClose">
-    <random-breed />
+    <random-breed :breeds="getRandomBreedWithSubBreeds()" />
   </app-modal>
   <section id="tasks_3-5" class="root">
     <div>
@@ -27,10 +27,11 @@ import BreadItem from "@/components/BreadItem.vue";
 import BreedButton from "@/components/BreedButton.vue";
 import AppModal from "@/components/AppModal.vue";
 import RandomBreed from "./RandomBreed.vue";
+
 export default defineComponent({
   setup() {
     const breeds = ref([]);
-    const isModalOpen = ref(true);
+    const isModalOpen = ref(false);
     const handleModalClose = () => {
       isModalOpen.value = !isModalOpen.value;
     };
@@ -46,6 +47,12 @@ export default defineComponent({
     const handleRandomBreedClick = () => {
       isModalOpen.value = !isModalOpen.value;
     };
+
+    const getRandomBreedWithSubBreeds = () =>
+      Object.entries(breeds.value).filter(
+        ([key, value]) => (value as []).length > 0
+      );
+
     //Hooks
     onMounted(() => {
       fetchBreeds();
@@ -57,6 +64,7 @@ export default defineComponent({
       handleRandomBreedClick,
       isModalOpen,
       handleModalClose,
+      getRandomBreedWithSubBreeds,
     };
   },
   components: {
