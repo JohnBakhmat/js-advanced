@@ -1,14 +1,21 @@
-<script lang="ts" setup>
-import { ref } from "vue";
+<script lang="ts">
+import { defineComponent } from "vue";
 
-const isOpen = ref(true);
+export default defineComponent({
+  props: {
+    isOpen: {
+      type: Boolean,
+      default: false,
+    },
+  },
+});
 </script>
 
 <template>
   <Teleport to="#modal">
-    <div v-if="true" class="modal-backdrop">
+    <div v-if="isOpen" class="modal-backdrop">
       <div class="modal">
-        <h1>Title</h1>
+        <slot />
       </div>
     </div>
   </Teleport>
