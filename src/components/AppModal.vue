@@ -9,7 +9,7 @@ export default defineComponent({
     },
   },
   emits: ["close"],
-  setup(props, ctx) {
+  setup(_, ctx) {
     const handleClickOutside = () => {
       ctx.emit("close");
     };
@@ -38,20 +38,22 @@ export default defineComponent({
   place-items: center;
   width: 100vw;
   height: 100vh;
-  background: #0002;
+  background: #0008;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
 }
 .modal {
   position: inherit;
   background: #000;
   max-width: 60vw;
   width: 100%;
-  min-height: 30%;
-  max-height: 70%;
+  min-height: 40vh;
+  max-height: 70vh;
   border-radius: 20px;
   display: grid;
   padding: 20px;
-
-  h1 {
+  box-shadow: 0 0 0 2px rgb(70, 70, 70);
+  & h1 {
     font-size: 1.75rem;
     color: #fff;
   }
