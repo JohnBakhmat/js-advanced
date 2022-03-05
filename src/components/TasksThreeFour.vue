@@ -18,20 +18,77 @@
         :breed="breed"
       />
     </ul>
+    <div
+      class="w-full grid grid-cols-2 gap-[15px] max-h-screen overflow-y-auto"
+    >
+      <breed-button classes="add-breed-btn" @click="handleAddBreed">
+        <i class="fas fa-plus-octagon"></i>
+        Add breed
+      </breed-button>
+      <breed-button classes="remove-breed-btn" @click="handleRemoveBreed">
+        <i class="fas fa-trash-alt"></i>
+        Remove breed
+      </breed-button>
+      <breed-button
+        classes="random-breed col-span-2"
+        @click="handleShuffleBreeds"
+      >
+        <i class="fas fa-random"></i>
+        Shuffle breeds
+      </breed-button>
+      <div class="col-span-2 w-full">
+        <task-five :breeds="selectedBreeds" />
+      </div>
+    </div>
   </section>
 </template>
 <script lang="ts">
 import axios from "axios";
-import { defineComponent, onMounted, ref } from "vue";
+import _ from "lodash";
+import { defineComponent, onMounted, ref, unref } from "vue";
 import BreadItem from "@/components/BreadItem.vue";
 import BreedButton from "@/components/BreedButton.vue";
 import AppModal from "@/components/AppModal.vue";
 import RandomBreed from "./RandomBreed.vue";
-
+import TaskFive from "@/components/TaskFive.vue";
 export default defineComponent({
   setup() {
-    const breeds = ref([]);
+    const breeds = ref({});
+    const selectedBreeds = ref({});
     const isModalOpen = ref(false);
+
+    const getRandomBreed = (data: object) => {
+      const randomNumber = Math.floor(
+        Math.random() * Object.entries(data).length
+      );
+      const temp = Object.entries(data)[randomNumber];
+      console.log(temp);
+      return Object.fromEntries([temp]);
+    };
+    const handleAddBreed = () => {
+      if (Object.keys(selectedBreeds.value).length <= 7) {
+        const randomBreed = getRandomBreed(unref(breeds));
+        // console.log(randomBreed);
+        selectedBreeds.value = { ...selectedBreeds.value, ...randomBreed };
+      }
+      return;
+    };
+
+    const handleRemoveBreed = () => {
+      if (Object.keys(selectedBreeds.value).length < 1) return;
+
+      const randomBreed = getRandomBreed(unref(selectedBreeds));
+      const key = Object.entries(randomBreed)[0][0].toString();
+      const { [key]: removed, ...rest } = selectedBreeds.value as any;
+      selectedBreeds.value = rest;
+    };
+
+    const handleShuffleBreeds = () => {
+      const array = Object.entries(selectedBreeds.value);
+      const shuffled = _.shuffle(array);
+      selectedBreeds.value = Object.fromEntries(shuffled);
+    };
+
     const handleModalClose = () => {
       isModalOpen.value = !isModalOpen.value;
     };
@@ -59,12 +116,16 @@ export default defineComponent({
     });
 
     return {
+      handleRemoveBreed,
+      handleAddBreed,
       scrollTo,
       breeds,
       handleRandomBreedClick,
       isModalOpen,
       handleModalClose,
       getRandomBreedWithSubBreeds,
+      selectedBreeds,
+      handleShuffleBreeds,
     };
   },
   components: {
@@ -72,6 +133,7 @@ export default defineComponent({
     BreedButton,
     AppModal,
     RandomBreed,
+    TaskFive,
   },
 });
 </script>
@@ -80,6 +142,7 @@ export default defineComponent({
   background: #222;
   color: white;
   display: grid;
+  column-gap: 15px;
   place-items: center;
   grid-template-columns: repeat(3, 1fr);
 }
@@ -103,6 +166,12 @@ export default defineComponent({
 }
 .random-breed {
   background: #008864;
+}
+.add-breed-btn {
+  background: #1d8eba;
+}
+.remove-breed-btn {
+  background: #a72c2c;
 }
 //Easter egg
 .random-breed-cursed {

@@ -2,19 +2,19 @@
   <div class="wrap">
     <tasks-one-two />
     <basic-wave />
-    <tasks-three-five />
+    <tasks-three-four />
   </div>
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
 import BasicWave from "@/components/BasicWave.vue";
 import TasksOneTwo from "@/components/TasksOneTwo.vue";
-import TasksThreeFive from "@/components/TasksThreeFive.vue";
+import TasksThreeFour from "@/components/TasksThreeFour.vue";
 export default defineComponent({
   components: {
     BasicWave,
     TasksOneTwo,
-    TasksThreeFive,
+    TasksThreeFour,
   },
 });
 </script>
