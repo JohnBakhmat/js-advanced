@@ -75,6 +75,7 @@ export default defineComponent({
   width: 100%;
   display: grid;
   grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 1fr);
   gap: 20px;
 }
 .subbreed-count {
@@ -104,6 +105,7 @@ img {
   max-height: 50vh;
 }
 ul {
+  grid-row: span 2;
   max-height: 50vh;
   overflow: auto;
   list-style-type: disc;
