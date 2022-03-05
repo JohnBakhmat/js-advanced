@@ -9,15 +9,7 @@
         Random breed
       </breed-button>
     </div>
-    <ul class="breed-list">
-      <div v-show="breeds.length === 0" class="text-white">Loading...</div>
-      <bread-item
-        v-for="(subBreeds, breed, index) in breeds"
-        :key="index"
-        :subBreed="subBreeds"
-        :breed="breed"
-      />
-    </ul>
+    <breed-list :breeds="breeds" />
     <div
       class="w-full grid grid-cols-2 gap-[15px] max-h-screen overflow-y-auto"
     >
@@ -37,7 +29,7 @@
         Shuffle breeds
       </breed-button>
       <div class="col-span-2 w-full">
-        <task-five :breeds="selectedBreeds" />
+        <breed-list :breeds="selectedBreeds" />
       </div>
     </div>
   </section>
@@ -50,7 +42,7 @@ import BreadItem from "@/components/BreadItem.vue";
 import BreedButton from "@/components/BreedButton.vue";
 import AppModal from "@/components/AppModal.vue";
 import RandomBreed from "./RandomBreed.vue";
-import TaskFive from "@/components/TaskFive.vue";
+import BreedList from "@/components/BreedList.vue";
 export default defineComponent({
   setup() {
     const breeds = ref({});
@@ -129,11 +121,10 @@ export default defineComponent({
     };
   },
   components: {
-    BreadItem,
     BreedButton,
     AppModal,
     RandomBreed,
-    TaskFive,
+    BreedList,
   },
 });
 </script>
