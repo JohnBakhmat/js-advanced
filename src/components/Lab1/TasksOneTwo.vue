@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, ref } from "vue";
-import Lab1Input from "@/components/Lab1Input.vue";
+import Lab1Input from "@/components/Lab1/Lab1Input.vue";
 import ArticleArrow from "@/components/ArticleArrow.vue";
 export default defineComponent({
   setup() {

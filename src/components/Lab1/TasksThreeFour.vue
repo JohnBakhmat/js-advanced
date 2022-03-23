@@ -38,11 +38,11 @@
 import axios from "axios";
 import _ from "lodash";
 import { defineComponent, onMounted, ref, unref } from "vue";
-import BreadItem from "@/components/BreadItem.vue";
-import BreedButton from "@/components/BreedButton.vue";
+import BreadItem from "@/components/Lab1/BreadItem.vue";
+import BreedButton from "@/components/Lab1/BreedButton.vue";
 import AppModal from "@/components/AppModal.vue";
 import RandomBreed from "./RandomBreed.vue";
-import BreedList from "@/components/BreedList.vue";
+import BreedList from "@/components/Lab1/BreedList.vue";
 export default defineComponent({
   setup() {
     const breeds = ref({});

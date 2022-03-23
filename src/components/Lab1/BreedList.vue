@@ -13,7 +13,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import BreadItem from "@/components/BreadItem.vue";
+import BreadItem from "@/components/Lab1/BreadItem.vue";
 export default defineComponent({
   props: {
     breeds: {

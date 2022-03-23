@@ -8,8 +8,8 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import BasicWave from "@/components/BasicWave.vue";
-import TasksOneTwo from "@/components/TasksOneTwo.vue";
-import TasksThreeFour from "@/components/TasksThreeFour.vue";
+import TasksOneTwo from "@/components/Lab1/TasksOneTwo.vue";
+import TasksThreeFour from "@/components/Lab1/TasksThreeFour.vue";
 export default defineComponent({
   components: {
     BasicWave,
