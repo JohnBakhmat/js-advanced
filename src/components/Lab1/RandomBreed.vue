@@ -12,9 +12,7 @@
         <li v-for="(breed, index) in subBreeds" :key="index">{{ breed }}</li>
       </ul>
     </div>
-    <div>
-      <img :src="breedImg" />
-    </div>
+    <img :src="breedImg" />
   </div>
 </template>
 <script lang="ts">
@@ -76,6 +74,7 @@ export default defineComponent({
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(3, 1fr);
+  max-height: 50vh;
   gap: 20px;
 }
 .subbreed-count {
@@ -106,7 +105,6 @@ img {
 }
 ul {
   grid-row: span 2;
-  max-height: 50vh;
   overflow: auto;
   list-style-type: disc;
   border-radius: 10px;
