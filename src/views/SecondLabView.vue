@@ -6,9 +6,18 @@
         @select="handleSelectionChange"
         label="Dog dataset"
       />
-      <dog-select :dataset="selectedDogList" label="Selected breads" />
+      <dog-select :dataset="selectedDogSelectArray" label="Selected breads" />
     </section>
     <basic-wave classes="transform scale-y-[-1]" />
+    <section class="dog-select-section">
+      <dog-select-list
+        :dataset="dogList"
+        :isSelectable="true"
+        :label="'Dog dataset'"
+        @select="handleSelectListChange"
+      />
+      <dog-select-list :dataset="selectedDogListArray" label="Selected dogs" />
+    </section>
   </div>
 </template>
 
@@ -17,17 +26,29 @@ import { ref, onMounted } from "vue";
 import axios from "axios";
 import BasicWave from "@/components/BasicWave.vue";
 import DogSelect from "@/components/Lab2/DogSelect.vue";
+import DogSelectList from "@/components/Lab2/DogSelectList.vue";
 export default {
   components: {
     BasicWave,
     DogSelect,
+    DogSelectList,
   },
 
   setup() {
     const dogList = ref([]);
-    const selectedDogList = ref([]);
+    const selectedDogSelectArray = ref([]);
+    const selectedDogListArray = ref([]);
     const handleSelectionChange = (selected) => {
-      selectedDogList.value = selected;
+      selectedDogSelectArray.value = selected;
+    };
+    const handleSelectListChange = (selected) => {
+      const current = selectedDogListArray.value;
+      if (current.includes(selected)) {
+        current.splice(current.indexOf(selected), 1);
+      } else {
+        current.push(selected);
+      }
+      selectedDogListArray.value = current.sort();
     };
     const fetchDogs = () => {
       axios.get("https://dog.ceo/api/breeds/list/all").then((res) => {
@@ -39,8 +60,10 @@ export default {
     });
     return {
       dogList,
-      selectedDogList,
+      selectedDogListArray,
+      selectedDogSelectArray,
       handleSelectionChange,
+      handleSelectListChange,
     };
   },
 };
